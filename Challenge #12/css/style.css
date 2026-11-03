@@ -1,0 +1,569 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+.app-container {
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    background-color: #4f46e5;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+.brand h1 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.brand .subtitle {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+.btn {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #4f46e5;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #4338ca;
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+/* Feature 1: Side Navigation (Sidenav) Styles */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #1e293b;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #94a3b8;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f5f9;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Feature 2: Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f5f9;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Feature 3: To-Do / Checklist Styles */
+.todo-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.todo-list li {
+    cursor: pointer;
+    position: relative;
+    padding: 10px 12px;
+    background: #f8fafc;
+    font-size: 14px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    border: 1px solid #e2e8f0;
+    transition: 0.2s;
+}
+
+.todo-list li:hover {
+    background: #e2e8f0;
+}
+
+.todo-list li.checked {
+    background: #cbd5e1;
+    color: #64748b;
+    text-decoration: line-through;
+}
+
+/* Feature 4: Progress Bar Styles */
+.progress-container {
+    width: 100%;
+    background-color: #e2e8f0;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    text-align: right;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #4f46e5;
+    border-radius: 9999px;
+}
+
+/* Feature 5: Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    font-size: 11px;
+    color: #4f46e5;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 90px;
+    background-color: #0f172a;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 4px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -45px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Dropdown & General Layout Styles from #11 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f1f5f9;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #334155;
+    padding: 10px 14px;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+}
+
+.dropdown-content a:hover {
+    background-color: #e2e8f0;
+}
+
+.show {
+    display: block;
+}
+
+.app-main {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    padding: 20px 15px;
+}
+
+.sidebar h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 10px 12px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    margin-bottom: 4px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+    background-color: #e0e7ff;
+    color: #4338ca;
+}
+
+.content-area {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    background-color: #f1f5f9;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+}
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    flex: 1;
+}
+
+.tab button.active {
+    background-color: #ffffff;
+    color: #4f46e5;
+    border-bottom: 2px solid #4f46e5;
+}
+
+.tabcontent {
+    padding: 16px;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background: #ffffff;
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.book-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 12px;
+}
+
+.book-cover-placeholder {
+    aspect-ratio: 3/4;
+    background-color: #f1f5f9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cover-icon {
+    font-size: 32px;
+}
+
+.progress-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: rgba(15, 23, 42, 0.75);
+    color: #ffffff;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-weight: 600;
+}
+
+.book-details {
+    margin-top: 10px;
+}
+
+.book-details h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.book-author {
+    font-size: 12px;
+    color: #64748b;
+    margin: 4px 0;
+}
+
+.status-row {
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.highlight-status {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.accordion {
+    background-color: #f1f5f9;
+    color: #334155;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.panel {
+    padding: 0 12px;
+    display: none;
+    background-color: white;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card-section {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.card-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.developer-note {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.video-wrapper {
+    margin-top: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+.video-wrapper video {
+    width: 100%;
+    display: block;
+    max-height: 380px;
+}
+
+.form-desc {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #475569;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+}
+
+.app-footer {
+    text-align: center;
+    padding: 16px;
+    border-top: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    font-size: 13px;
+    color: #64748b;
+}
+
+@media (max-width: 768px) {
+    .app-main {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+}

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShelfSpace - Digital ePub Reader &amp; Library</title>
+    <meta
+      name="description"
+      content="ShelfSpace is a simple, distraction-free web-based ePub reader and personal digital library."
+    />
+    <meta
+      name="keywords"
+      content="ShelfSpace, ePub, eBook Reader, Digital Library, Web Reader"
+    />
+    <meta name="author" content="CJ Gelacio" />
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
+
+    <!-- Internal CSS -->
+    <style>
+      /* Base page styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6f8;
+        color: #333333;
+      }
+
+      /* Header styling */
+      header {
+        background-color: #4a5568;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* Navigation menu styling */
+      nav {
+        background-color: #2d3748;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      nav li a {
+        display: block;
+        color: #ffffff;
+        padding: 12px 20px;
+        text-decoration: none;
+      }
+
+      nav li a:hover {
+        background-color: #4a5568;
+      }
+
+      /* Main layout container (Sidebar + Content) */
+      main {
+        display: flex;
+        margin: 20px;
+        gap: 20px;
+      }
+
+      /* Sidebar navigation */
+      aside {
+        flex: 1;
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 6px;
+      }
+
+      aside ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      aside li a {
+        display: block;
+        padding: 8px 0;
+        color: #2b6cb0;
+        text-decoration: none;
+      }
+
+      /* Main content area */
+      section {
+        flex: 3;
+      }
+
+      article {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        border-left: 4px solid #3182ce;
+      }
+
+      /* Footer styling */
+      footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #e2e8f0;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ShelfSpace</h1>
+      <p>Digital ePub Library &amp; Reader Application</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#library">Library</a></li>
+        <li><a href="#upload">Import ePub</a></li>
+        <li><a href="#settings">Settings</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <aside>
+        <h3>Library Categories</h3>
+        <ul>
+          <li><a href="#all">All Books</a></li>
+          <li><a href="#reading">Currently Reading</a></li>
+          <li><a href="#completed">Completed</a></li>
+        </ul>
+      </aside>
+
+      <section>
+        <article>
+          <h2>Featured Book: Clean Code</h2>
+          <p><strong>Author:</strong> Robert C. Martin</p>
+          <p>A handbook of agile software craftsmanship.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 ShelfSpace Project. Created by CJ Gelacio.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShelfSpace - Digital ePub Reader &amp; Library</title>
+    <meta
+      name="description"
+      content="ShelfSpace is a simple, distraction-free web-based ePub reader and personal digital library."
+    />
+    <meta
+      name="keywords"
+      content="ShelfSpace, ePub, eBook Reader, Digital Library, Web Reader"
+    />
+    <meta name="author" content="CJ Gelacio" />
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Application Header -->
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-icon">📚</div>
+          <div>
+            <h1>ShelfSpace</h1>
+            <p class="subtitle">Your Personal Digital Library</p>
+          </div>
+        </div>
+
+        <!-- Feature 5: Dropdown Menu -->
+        <div class="dropdown">
+          <button onclick="toggleDropdown()" class="btn btn-secondary dropbtn">
+            Menu ▼
+          </button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#all">Library</a>
+            <a href="#" onclick="openModal()">Quick Info</a>
+            <a href="#contact">Support</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Body Layout -->
+      <main class="app-main">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+          <h3>Library</h3>
+          <nav class="sidebar-nav">
+            <ul>
+              <li><a href="#all" class="active">All Books</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact &amp; Support</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="content-area">
+          <!-- Feature 4: Search Filter Input -->
+          <div class="search-container">
+            <input
+              type="text"
+              id="bookSearchInput"
+              onkeyup="filterBooks()"
+              placeholder="Search books by title..."
+            />
+          </div>
+
+          <!-- Feature 3: Tabbed Content -->
+          <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'GridTab')">
+              Grid View
+            </button>
+            <button class="tablinks" onclick="openTab(event, 'ListTab')">
+              List View
+            </button>
+          </div>
+
+          <!-- Tab 1 Content: Grid View -->
+          <div id="GridTab" class="tabcontent" style="display: block">
+            <div class="section-title">Featured Titles</div>
+            <div class="book-grid" id="bookGridList">
+              <article class="book-card" id="featured-article">
+                <div class="book-cover-placeholder">
+                  <span class="cover-icon">📖</span>
+                  <span class="progress-badge">45%</span>
+                </div>
+                <div class="book-details">
+                  <h3 id="featured-book-title">Clean Code</h3>
+                  <p class="book-author">Robert C. Martin</p>
+                  <p class="status-row">
+                    Status: <span class="highlight-status">In Progress</span>
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Tab 2 Content: List View -->
+          <div id="ListTab" class="tabcontent" style="display: none">
+            <div class="section-title">Compact Library List</div>
+            <ul class="compact-list">
+              <li>
+                <strong>Clean Code</strong> by Robert C. Martin (45% Complete)
+              </li>
+            </ul>
+          </div>
+
+          <!-- Feature 1: Accordion (FAQ / Tips) -->
+          <article class="card-section">
+            <h2>Reader FAQ &amp; Tips</h2>
+            <button class="accordion">How do I upload books?</button>
+            <div class="panel">
+              <p>
+                Click the add button or drop your .epub files into the library
+                area.
+              </p>
+            </div>
+
+            <button class="accordion">Is ShelfSpace offline-capable?</button>
+            <div class="panel">
+              <p>
+                Yes, ShelfSpace runs completely client-side in your browser.
+              </p>
+            </div>
+          </article>
+
+          <!-- Feature 2: Modal Box Trigger Button -->
+          <article class="card-section">
+            <h2>App Information</h2>
+            <p>Want to see a quick summary modal popup?</p>
+            <button onclick="openModal()" class="btn btn-primary">
+              Open Info Modal
+            </button>
+          </article>
+
+          <!-- The Modal Box -->
+          <div id="infoModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeModal()">&times;</span>
+              <h2>ShelfSpace Info</h2>
+              <p>
+                Welcome to Challenge #11! This modal is powered by W3Schools
+                How-To styles and custom JS.
+              </p>
+            </div>
+          </div>
+
+          <!-- About Us Section with Video -->
+          <article class="card-section" id="about">
+            <h2>About ShelfSpace</h2>
+            <p>
+              ShelfSpace is designed as a minimal, offline-first digital reader
+              for your ePub collection.
+            </p>
+            <p class="developer-note">
+              <em
+                >Thanks for using the web app! Here is a special developer
+                message:</em
+              >
+            </p>
+
+            <div class="video-wrapper">
+              <video controls>
+                <source src="video/rickroll.mp4" type="video/mp4" />
+                Your browser does not support HTML5 video.
+              </video>
+            </div>
+          </article>
+
+          <!-- Contact Form Section -->
+          <article class="card-section" id="contact">
+            <h2>Contact &amp; Feedback</h2>
+            <p class="form-desc">
+              Have feedback, suggestions, or bug reports? Send us a message
+              below.
+            </p>
+
+            <form action="#" method="POST" class="contact-form">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="name@example.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Type your message here..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary submit-btn">
+                Send Message
+              </button>
+            </form>
+          </article>
+        </section>
+      </main>
+
+      <!-- Application Footer -->
+      <footer class="app-footer">
+        <p>&copy; 2026 ShelfSpace Project. Created by CJ Gelacio.</p>
+      </footer>
+    </div>
+
+    <!-- External Script in its own folder -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
